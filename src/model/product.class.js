@@ -15,6 +15,13 @@ class Product {
     toString() {
         return this.name + ": " + this.units + " uds. x " + this.price + " €/u = " + this.productImport(this.price, this.units) + " €";
     }
+    moreUnits(){
+        this.units++
+    }
+    lessUnits(){
+        this.units--
+    }
+
 }
 
 module.exports = Product

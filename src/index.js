@@ -19,10 +19,16 @@ window.addEventListener('load', () => {
     const category = parseInt(document.getElementById('newprod-selcat').value)
     const units = parseInt(document.getElementById('newprod-units').value)   
     // ...
-    
+    const idProd = document.getElementById('newprod-id').value; 
     // Aquí llamamos a la función del controlador que añade productos (addProductToStore)
     // pasándole como parámetro esos datos
-    myController.addProductToStore({ name, category, price, units })   
+    if(idProd){
+        //modificar 
+        let id=document.getElementById('newprod-id').value;
+        myController.modifyProductToStore({id, name, category, price, units })
+    }else{
+      myController.addProductToStore({ name, category, price, units })
+    }
     // Sintaxis de ES2015 que equivale a 
     //
     // myController.addProductToStore(
@@ -33,11 +39,21 @@ window.addEventListener('load', () => {
     // ) 
   })
 
-  document.getElementById('del-prod').addEventListener('submit', (event) => {
-    event.preventDefault()
-
-    myController.deleteProductFromStore(document.getElementById('del-prod-input').value)      
-  })
+  document.getElementById("tab-producto").addEventListener("click", () => {
+    document.getElementById("almacen").classList.remove("hide")
+    document.getElementById("form-prod").classList.add("hide")
+    document.getElementById("form-categoria").classList.add("hide")
+   });
+   document.getElementById("tab-addProducto").addEventListener("click", () => {
+    document.getElementById("almacen").classList.add("hide")
+    document.getElementById("form-prod").classList.remove("hide")
+    document.getElementById("form-categoria").classList.add("hide")
+   });
+   document.getElementById("tab-addCategoria").addEventListener("click", () => {
+    document.getElementById("almacen").classList.add("hide")
+    document.getElementById("form-prod").classList.add("hide")
+    document.getElementById("form-categoria").classList.remove("hide")
+   });
 
   document.getElementById('new-cat').addEventListener('submit', (event) => {
     event.preventDefault()

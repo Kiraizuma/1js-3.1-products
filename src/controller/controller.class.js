@@ -14,7 +14,7 @@ class Controller {
     addProductToStore(payload) {
         const prod = this.store.addProduct(payload);
         this.store.products.forEach((prod) => console.log(prod));
-        this.view.mostrarProducto(prod);
+        this.view.mostrarProducto(prod,this.deleteProductFromStore.bind(this));
         const totalImport = this.store.totalImport();
         this.view.mostrarImporte(totalImport);
     }
@@ -34,6 +34,12 @@ class Controller {
         const cat = this.store.addCategory(payload.name, payload.descripcion);
         this.store.categories.forEach((cat) => console.log(cat));
         this.view.mostrarCategoria(cat);
+    }
+    modifyProductToStore(payload){
+        const prodModificado = this.store.modificarProducto(payload);
+        this.view.mostrarProductoModificado(prodModificado);  
+        const totalImport = this.store.totalImport();
+        this.view.mostrarImporte(totalImport);      
     }
 }
 

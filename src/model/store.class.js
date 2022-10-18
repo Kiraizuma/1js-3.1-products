@@ -127,6 +127,12 @@ class Store {
         this.products.forEach((prod) => (cadena += "\n- " + prod));
         return cadena;
     }
+
+    modificarProducto(payload){
+        let index = this.products.findIndex(prod => prod.id === payload.id)
+        let prodModificado = new Product(payload.id, payload.name, payload.category, payload.price, payload.units);
+        return prodModificado;
+    }
 }
 
 module.exports = Store;
