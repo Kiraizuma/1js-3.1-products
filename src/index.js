@@ -22,6 +22,9 @@ window.addEventListener('load', () => {
     const idProd = document.getElementById('newprod-id').value; 
     // Aquí llamamos a la función del controlador que añade productos (addProductToStore)
     // pasándole como parámetro esos datos
+    if(!document.getElementById("new-prod").checkValidity()){
+      return
+    }
     if(idProd){
         //modificar 
         let id=document.getElementById('newprod-id').value;

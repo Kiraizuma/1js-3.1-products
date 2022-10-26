@@ -75,6 +75,13 @@ class Store {
         return pro;
     }
 
+    productNameExist(name){
+        if(this.products.find(this.products).name === name){
+            return true;
+        }
+        return false;
+    }
+
     delCategory(id) {
         try {
             var catnull = this.getCategoryById(id);
